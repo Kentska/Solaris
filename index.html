@@ -1,48 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="style.css">
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="icon" href="data:,">
+
+
 </head>
 <body>
-	<section class="container">
-		<aside class="aside">
-			
-		<img src="images/sun2.png" alt="sun" class="sun-btn" id="solen">
-		
-		</aside>
+<section class="container">
+    <aside class="aside">
 
-		<section class="container1">
-			<h1>SOLSYSTEMET</h1>
-			<h5>SOLARIS</h5>
-		</section>
+        <img src="images/sun2.png" alt="sun" class="sun-btn" id="solen">
 
-	
-		<section class="main">
-			<button id="merkurius" class="circle-btn" aria-label="Merkurius"></button>
-			<button id="venus" class="circle-btn" aria-label="Venus"></button>
-			<button id="jorden" class="circle-btn" aria-label="Jorden"></button>
-			<button id="mars" class="circle-btn" aria-label="Mars"></button>
-			<button id="jupiter" class="circle-btn" aria-label="Jupiter"></button>
-			<button id="saturnus" class="circle-btn" aria-label="Saturnus"></button>
-			<button id="uranus" class="circle-btn" aria-label="Uranus"></button>
-			<button id="neptunus" class="circle-btn" aria-label="Neptunus"></button>
-			<div id="newItem"></div>
-		</section>
-	
-	</section>
-	
-		<div id="popup" class="popup">
-			<button id="closePopup" class="close-btn">X</button>
-			<div id="popupContent"></div>	
-		</div>
-		
-		
+    </aside>
 
-	
-	<script src="index.js" type="module"></script>
+    <section class="container1">
+        <h1>SOLSYSTEMET</h1>
+        <h5>SOLARIS</h5>
+    </section>
+
+
+    <section class="main">
+        <button id="merkurius" class="circle-btn" aria-label="Merkurius"></button>
+        <button id="venus" class="circle-btn" aria-label="Venus"></button>
+        <button id="jorden" class="circle-btn" aria-label="Jorden"></button>
+        <button id="mars" class="circle-btn" aria-label="Mars"></button>
+        <button id="jupiter" class="circle-btn" aria-label="Jupiter"></button>
+        <button id="saturnus" class="circle-btn" aria-label="Saturnus"></button>
+        <button id="uranus" class="circle-btn" aria-label="Uranus"></button>
+        <button id="neptunus" class="circle-btn" aria-label="Neptunus"></button>
+        <div id="newItem"></div>
+    </section>
+
+</section>
+
+
+
+<div id="popup" class="popup">
+    <div id="popupContent">
+    <h2 id="popup-name"></h2>
+    <h4 id="popup-latin-name"></h4>
+    <p id="popup-desc"></p>
+    <div class="popup-details">
+
+        <div class="popup-column">
+            <p><strong>OMKRETS:</strong></p>
+            <p id="popup-circumference"></p>
+            <p><strong>MAX TEMPERATUR:</strong></p>
+            <p id="popup-temp-day"></p>
+            <div class="moon-list">
+                <p><strong>Moons:</strong></p>
+                <p id="popup-moons"></p>
+            </div>
+        </div>
+        <div class="popup-column">
+            <p><strong>KM FRÅN SOLEN:</strong></p>
+            <p id="popup-distance"></p>
+            <p><strong>MIN TEMPERATUR:</strong></p>
+            <p id="popup-temp-night"></p>
+        </div>
+        </div>
+    </div>
+
+    <button id="closePopup" class="close-btn">x</button>
+
+</div>
+
+<script src="index.js" type="module"></script>
 </body>
 </html>

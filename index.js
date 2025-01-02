@@ -1,18 +1,42 @@
 import { getKey, getPlanets } from "./api.js";
 
-const popup = document.getElementById('popup');
-const popupContent = document.getElementById('popupContent');
-const closePopup = document.getElementById('closePopup');
-const planetButtons = document.querySelectorAll('.circle-btn, .sun-btn');
+
+
+
+
 
 // Funktion för att visa popup
-function showPopup(content) {
-	popupContent.innerHTML = content;
+function showPopup(planet) {
+	const popup = document.getElementById('popup');
+	const popupName = document.getElementById('popup-name');
+	const popupLatinName = document.getElementById('popup-latin-name');
+	const popupDesc = document.getElementById('popup-desc');
+	const popupCircumference = document.getElementById('popup-circumference');
+	const popupTempDay = document.getElementById('popup-temp-day');
+	const popupTempNight = document.getElementById('popup-temp-night');
+	const popupDistance = document.getElementById('popup-distance');
+	const popupMoons = document.getElementById('popup-moons');
+
+	// Fyll med Data
+
 	popup.style.display = 'block';
+	popupName.textContent = planet.name;
+	popupLatinName.textContent = planet.latinName;
+	popupDesc.textContent = planet.desc;
+	popupCircumference.textContent = `${planet.circumference} km`;
+	popupTempDay.textContent = `${planet.temp.day} °C`;
+	popupTempNight.textContent = `${planet.temp.night} °C`;
+	popupDistance.textContent = `${planet.distance} km`;
+	popupMoons.textContent = planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga';
+
 }
 
+
+
 // Funktion för att stänga popup
+const closePopup = document.getElementById('closePopup');
 closePopup.addEventListener('click', () => {
+	const popup = document.getElementById('popup');
 	popup.style.display = 'none';
 });
 
@@ -34,39 +58,17 @@ closePopup.addEventListener('click', () => {
 			const planetButtons = document.querySelectorAll('.circle-btn, .sun-btn');
 
 			planetButtons.forEach((button) => {
-				button.addEventListener('click',  () => {
+				button.addEventListener('click', () => {
 					const planetId = button.id; // Använt knappens ID för att hitta rätt planet.
 					const planet = planets.find((p) => p.name.toLowerCase() === planetId);
-					
+
 					if (planet) {
-						// Visa popup med planetdata
-						showPopup(`
-                            <h2>${planet.name}</h2>
-							<h4>${planet.latinName}</h4>
-							<p>${planet.desc}</p>
-							<div class="popup-details">
-        						<div class="popup-column">
-                            		<p><strong>OMKRETS:</strong></p>
-									<p>${planet.circumference}km </p>
-									<p><strong>MAX TEMPERATUR:</strong></p>
-									<p>${planet.temp.day} °C</p>
-									<div class="moon-list">
-    					<p><strong>Moons:</strong></p>
-						<p>${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga'}</p>
-							</div>
-								</div>
-								 <div class="popup-column">
-            						<p><strong>KM FRÅN SOLEN:</strong></p>
-            						<p>${planet.distance} km</p>
-            						<p><strong>MIN TEMPERATUR:</strong></p>
-            						<p>${planet.temp.night} °C</p>
-        						</div>
-    						
-						</div>								
-                        `);
+						showPopup(planet);
+
 					} else {
 						// Visa felmeddelande om data inte hittas
-						showPopup(`<p>Data för ${planetId} kunde inte hämtas.</p>`);
+						console.error(`Data för ${planetId} kunde inte hämtas.`);
+						/*showPopup(`<p>Data för ${planetId} kunde inte hämtas.</p>`);*/
 					}
 				});
 			});
@@ -78,4 +80,3 @@ closePopup.addEventListener('click', () => {
 		console.error('Ett fel inträffade:', error);
 	}
 })();
-
